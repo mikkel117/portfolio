@@ -1,0 +1,650 @@
+//https://blog.logrocket.com/8-ways-to-deploy-a-react-app-for-free/
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html {
+  height: 100%;
+}
+
+body {
+  background-color: #1e1f26;
+  color: white;
+  min-height: 100%;
+  position: relative;
+}
+
+#root {
+  padding-bottom: 60px;
+}
+
+//----------------------
+//style to the error if there is any
+//----------------------
+.error {
+  color: red;
+  font-weight: bold;
+}
+
+//----------------------
+//cookie policy
+//----------------------
+.cookie-policy-wrapper {
+  position: fixed;
+  z-index: 1;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 1);
+
+  .cookie-policy-content {
+    padding: 10px;
+    font-size: 2.5vh;
+    p {
+      display: inline;
+      margin-right: 10px;
+    }
+    button {
+      padding: 5px;
+    }
+  }
+}
+
+//----------------------
+//animate typing
+//----------------------
+.typing {
+  width: 15ch;
+  animation: typing 2s steps(22), blink 0.9s infinite;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid;
+
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+  }
+
+  @keyframes blink {
+    50% {
+      border-color: transparent;
+    }
+  }
+}
+
+//----------------------
+//nav
+//----------------------
+nav {
+  overflow: hidden;
+  top: 0;
+  width: 100%;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+
+  .list-inline {
+    list-style-type: none;
+
+    li {
+      float: left;
+      a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+
+      a:hover {
+        background-color: gray;
+      }
+    }
+  }
+  .close {
+    display: none;
+  }
+  .open {
+    display: none;
+  }
+}
+
+//----------------------
+//Loader
+//----------------------
+.loader {
+  margin: 0 auto;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  width: 110px;
+  height: 110px;
+  animation: spin 2s infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @keyframes spin {
+    0% {
+      border: 16px solid gray;
+    }
+    50% {
+      border: 16px solid #1e1f26;
+    }
+    100% {
+      transform: rotate(360deg);
+      border: 16px solid gray;
+    }
+  }
+}
+
+//----------------------
+//modal
+//----------------------
+.modal {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  .modal-content {
+    max-height: 100%;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(auto);
+    grid-column-gap: 10px;
+    background-color: #393939;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+
+    h1 {
+      grid-row: 1;
+      grid-column: 1;
+    }
+    a {
+      margin-top: 10px;
+      color: white;
+      font-weight: bolder;
+    }
+    a:hover {
+      color: rgba(177, 175, 175, 0.5);
+    }
+    .close {
+      grid-column: 2;
+      justify-self: end;
+      color: white;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+    .close:hover,
+    .close:focus {
+      color: black;
+      cursor: pointer;
+    }
+
+    img {
+      width: 100%;
+    }
+
+    .work-links {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .github-link {
+      justify-self: flex-end;
+    }
+  }
+}
+
+//----------------------
+//home
+//----------------------
+.home {
+  width: 100%;
+  height: 500px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  grid-row-gap: 20px;
+  text-align: center;
+  justify-content: center;
+  .wrapper-icon {
+    align-self: center;
+    p,
+    h1 {
+      margin-top: 10px;
+    }
+    h1 {
+      display: flex;
+    }
+  }
+  .skills {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    background-color: black;
+  }
+  .loader {
+    align-self: center;
+  }
+  h2 {
+    align-self: center;
+  }
+
+  .devicon-csharp-line-wordmark {
+    font-size: 30px;
+  }
+  ul {
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    li {
+      border-radius: 10%;
+      display: inline-block;
+      background-color: #1e1f26;
+      padding: 15px;
+      margin: 10px;
+    }
+  }
+
+  .profail {
+    width: 20vh;
+    height: 20vh;
+    border-radius: 6em;
+  }
+}
+
+//----------------------
+//about me
+//----------------------
+.about-me {
+  width: 100%;
+
+  .about-me-content {
+    /* overflow: hidden; */
+    margin: 0 auto;
+    width: 50%;
+    .content-top {
+      width: 100%;
+      background-color: white;
+      display: flex;
+      justify-content: flex-start;
+      .close,
+      .mini,
+      .big {
+        width: 15px;
+        height: 15px;
+        border-radius: 10em;
+        border: solid 1px black;
+        margin: 2px;
+        background-color: red;
+      }
+      .close:hover,
+      .mini:hover,
+      .big:hover {
+        cursor: pointer;
+      }
+
+      .mini {
+        background-color: yellow;
+      }
+      .big {
+        background-color: green;
+      }
+    }
+
+    .content-text {
+      position: relative;
+      padding: 5px;
+      /* background-color: black; */
+    }
+    .content-text[openMini="1"] {
+      animation: mini 2s linear forwards;
+    }
+
+    .content-text[openMini="0"] {
+      animation: open 0.5s linear forwards;
+    }
+
+    @keyframes open {
+      0% {
+        z-index: -1;
+        opacity: 0;
+        top: -500px;
+      }
+      100% {
+        opacity: 1;
+        z-index: -1;
+        top: 0;
+      }
+    }
+
+    @keyframes mini {
+      0% {
+        z-index: -1;
+        top: 0;
+      }
+      15% {
+        opacity: 0;
+      }
+      100% {
+        z-index: -1;
+        opacity: 0;
+        top: -200px;
+      }
+    }
+  }
+  .about-me-content[close="1"] {
+    animation: close 0.6s linear forwards;
+  }
+
+  .about-me-content[close="0"] {
+    animation: cOpen 0.5s linear forwards;
+  }
+
+  @keyframes cOpen {
+    0% {
+      z-index: -1;
+      width: 10%;
+      opacity: 0;
+    }
+    100% {
+      z-index: 1;
+      width: 50%;
+      opacity: 1;
+    }
+  }
+
+  @keyframes close {
+    0% {
+      z-index: -1;
+      opacity: 1;
+    }
+    100% {
+      width: 20%;
+      opacity: 0;
+    }
+  }
+  .openFormWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+//----------------------
+//work
+//----------------------
+.workSection {
+  display: flex;
+  justify-content: center;
+  .work {
+    width: 50%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: repeat(auto, 100px);
+    grid-gap: 15px;
+    .error {
+      margin: 0 auto;
+      grid-column: 2;
+    }
+    img {
+      justify-self: center;
+      border: 2px solid gray;
+      width: 200px;
+      height: 200px;
+    }
+    img:hover {
+      padding: 2px;
+      cursor: pointer;
+      box-shadow: 3px 3px 5px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    .loader {
+      grid-column: 2;
+    }
+  }
+  .modalImg {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+//----------------------
+//edcationplan
+//----------------------
+.edcationPlan {
+  text-align: center;
+  width: 100%;
+  h1 {
+    margin-bottom: 10px;
+  }
+  ul {
+    list-style-type: none;
+    width: 100%;
+    li {
+      border: solid 3px gray;
+      margin: 0 auto;
+      margin-bottom: 15px;
+      width: 50%;
+      padding: 0.4vw;
+      background-color: #05060d;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      p,
+      h2 {
+        font-size: 3vh;
+        align-self: center;
+      }
+      .time {
+        border-left: solid 3px gray;
+      }
+    }
+    li:nth-child(even) {
+      background-color: #1f2026;
+    }
+  }
+}
+
+//----------------------
+//login
+//----------------------
+.login {
+  text-align: center;
+  .loggedIn {
+    p {
+      margin-bottom: 10px;
+    }
+    img {
+      width: 7vw;
+      border-radius: 10em;
+    }
+  }
+  .logout {
+    margin-top: 10px;
+  }
+  .cange-name-form {
+    margin-top: 10px;
+  }
+  span {
+    margin-bottom: 10px;
+  }
+  div {
+    .login-toggle {
+      display: inline-block;
+      font-weight: bolder;
+      width: auto;
+      border-bottom: solid 2px black;
+    }
+    p:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+//----------------------
+//footer
+//----------------------
+footer {
+  background-color: black;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  a {
+    color: white;
+    i {
+      padding: 10px;
+    }
+  }
+  i {
+    padding: 10px;
+  }
+  p {
+    font-size: 1.5vw;
+    padding: 12px 16px;
+    text-align: center;
+    align-self: center;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  nav {
+    padding: 20px;
+    display: flex;
+    justify-content: flex-end;
+
+    .sidepanel {
+      width: auto;
+      height: 100%;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      right: -120px;
+      background-color: #111;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      animation: example 1s forwards;
+
+      .close {
+        align-self: flex-end;
+        padding: 10px;
+        display: block;
+      }
+      .close:hover {
+        cursor: pointer;
+      }
+
+      li {
+        border: solid 1px gray;
+        margin: 5px;
+        a {
+          padding: 8px 8px 8px 8px;
+          text-decoration: none;
+          display: block;
+        }
+      }
+    }
+
+    @keyframes example {
+      0% {
+        right: -120px;
+      }
+      100% {
+        right: 0;
+      }
+    }
+    .close,
+    .open {
+      display: block;
+    }
+  }
+
+  .workSection {
+    .work {
+      grid-template-columns: 1fr 1fr;
+      width: 100%;
+      padding: 10px;
+      .loader {
+        grid-column: 1/3;
+      }
+      .error {
+        grid-column: 1/3;
+      }
+      img {
+        height: 200px;
+      }
+    }
+  }
+  .modal {
+    .modal-content {
+      margin: 0;
+      width: 100%;
+
+      img {
+        grid-column: 1/3;
+        width: 50%;
+        height: 100%;
+        justify-self: center;
+      }
+      p {
+        grid-column: 1/3;
+      }
+      .work-links {
+        grid-column: 1/3;
+        padding: 10px;
+      }
+    }
+  }
+  .edcationPlan {
+    ul {
+      li {
+        width: 80%;
+      }
+    }
+  }
+
+  .login {
+    .loggedIn {
+      img {
+        width: 20vw;
+      }
+    }
+  }
+
+  .cookie-policy-wrapper {
+    text-align: center;
+  }
+
+  .about-me {
+    .about-me-content {
+      .content-top {
+        justify-content: space-between;
+        .close,
+        .mini,
+        .big {
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+  }
+
+  footer {
+    p {
+      font-size: 2vh;
+    }
+  }
+}
