@@ -33,7 +33,7 @@ export default function Home() {
       </div>
 
       <div className='skills'>
-        <h2>skills </h2>
+        <h2>skills</h2>
         {error ? (
           <p className='error'>failed to connect to firebase</p>
         ) : (
