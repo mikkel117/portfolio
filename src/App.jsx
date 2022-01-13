@@ -11,6 +11,7 @@ function App() {
       <FetchContextProvider>
         <Nav />
         {/* <Cookie /> */}
+        {/* test */}
         <Footer />
       </FetchContextProvider>
     </>
