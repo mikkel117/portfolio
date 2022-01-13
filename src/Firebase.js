@@ -1,14 +1,14 @@
-import { initializeApp } from 'firebase/app';
+import { initializeApp } from "firebase/app";
 /* import { getFirestore} from "firebase/firestore" */
 
 const firebaseApp = initializeApp({
-  apiKey: "AIzaSyDjxWagid66_SVDtLGDCu7EaiJqyCDNnNY",
-  authDomain: "my-project-ad593.firebaseapp.com",
-  projectId: "my-project-ad593",
-  storageBucket: "my-project-ad593.appspot.com",
-  messagingSenderId: "557206896028",
-  appId: "1:557206896028:web:c08451f843cdd6d3db5c59",
-  measurementId: "G-L83Y4YY7Z7"
+  apiKey: `${process.env.REACT_APP_FIREBASE_API_KEY}`,
+  authDomain: `${process.env.REACT_APP_AUTHDOMAIN}`,
+  projectId: `${process.env.REACT_APP_PROJECTID}`,
+  storageBucket: `${process.env.REACT_APP_STORAGEBUCKET}`,
+  messagingSenderId: `${process.env.REACT_APP_MESSAGINGSENDERID}`,
+  appId: `${process.env.REACT_APP_APPID}`,
+  measurementId: `${process.env.REACT_APP_MEASUREMENTID}`,
 });
 
 export default firebaseApp;
