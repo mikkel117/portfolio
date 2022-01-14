@@ -65,7 +65,7 @@ export default function Work() {
             <option value='react'>react</option>
             <option value='placeholder'>placeholder</option>
           </select>
-          <input type='submit' />
+          <input type='submit' value={"søg"} />
         </form>
       </div>
       <section className='work'>
