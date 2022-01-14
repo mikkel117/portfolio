@@ -17,10 +17,11 @@ export default function Work() {
   const onSubmit = (data) => FilterByTag(data);
 
   const FilterByTag = (data) => {
-    if (data.value === "0") {
+    console.log(data);
+    if (data.platform === "0") {
       setIsSearch(false);
     } else {
-      setSearchArray(postData.filter((o) => o.tag.includes(data.value)));
+      setSearchArray(postData.filter((o) => o.tag.includes(data.platform)));
       setIsSearch(true);
     }
   };
@@ -59,13 +60,18 @@ export default function Work() {
     <section className='workSection'>
       <div className='searchWrapper'>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <select {...register("value")}>
+          <select {...register("platform")}>
             <option value='0'>Select tag</option>
             <option value='c#'>c#</option>
-            <option value='react'>react</option>
+            <option value='web'>web</option>
             <option value='placeholder'>placeholder</option>
           </select>
-          <input type='submit' value={"søg"} />
+          <select {...register("language")}>
+            <option value='0'>Select language</option>
+            <option value='c#'>c#</option>
+            <option value='react'>react</option>
+          </select>
+          <button type='submit'>søg</button>
         </form>
       </div>
       <section className='work'>
