@@ -8,7 +8,7 @@ export default function Home() {
   const { error } = useContext(FetchContext);
 
   return (
-    <div className='home'>
+    <section className='home'>
       <div className='wrapper-icon'>
         {error ? (
           <p className='error'>failed to connect to firebase</p>
@@ -56,6 +56,6 @@ export default function Home() {
           </>
         )}
       </div>
-    </div>
+    </section>
   );
 }

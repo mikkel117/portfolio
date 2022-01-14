@@ -391,7 +391,16 @@ nav {
 //----------------------
 .workSection {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  .searchWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+  }
   .work {
     width: 50%;
     display: grid;
@@ -575,6 +584,11 @@ footer {
       display: block;
     }
   }
+  .home {
+    .skills {
+      width: 100%;
+    }
+  }
 
   .workSection {
     .work {
@@ -649,6 +663,14 @@ footer {
   footer {
     p {
       font-size: 2vh;
+    }
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .workSection {
+    img {
+      grid-column: 1/3;
     }
   }
 }

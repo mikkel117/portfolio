@@ -1,14 +1,31 @@
 import React, { useState, useContext } from "react";
 import { FetchContext } from "../../contexts/Fetch";
+import { useForm } from "react-hook-form";
 
 export default function Work() {
+  const { register, handleSubmit } = useForm();
+
   const [toggle, setToggle] = useState(false);
   const [number, setNumber] = useState();
+  const [isSearch, setIsSearch] = useState(false);
+  const [searchArray, setSearchArray] = useState([]);
+
   const { postData } = useContext(FetchContext);
   const { load } = useContext(FetchContext);
   const { error } = useContext(FetchContext);
 
-  const ProjectsChose = (number) => {
+  const onSubmit = (data) => FilterByTag(data);
+
+  const FilterByTag = (data) => {
+    if (data.value === "0") {
+      setIsSearch(false);
+    } else {
+      setSearchArray(postData.filter((o) => o.tag.includes(data.value)));
+      setIsSearch(true);
+    }
+  };
+
+  const ProjectsModal = (number) => {
     return (
       <>
         <h1>{postData[number].title}</h1>
@@ -40,6 +57,17 @@ export default function Work() {
   };
   return (
     <section className='workSection'>
+      <div className='searchWrapper'>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <select {...register("value")}>
+            <option value='0'>Select tag</option>
+            <option value='c#'>c#</option>
+            <option value='react'>react</option>
+            <option value='placeholder'>placeholder</option>
+          </select>
+          <input type='submit' />
+        </form>
+      </div>
       <section className='work'>
         {error ? (
           <p className='error'>failed to connect to firebase</p>
@@ -51,20 +79,41 @@ export default function Work() {
               </>
             ) : (
               <>
-                {postData &&
-                  postData.map((data) => {
-                    return (
-                      <img
-                        src={data.img}
-                        onClick={() => {
-                          setToggle(!toggle);
-                          setNumber(data.index);
-                        }}
-                        alt=''
-                        key={data.index}
-                      />
-                    );
-                  })}
+                {isSearch ? (
+                  <>
+                    {searchArray &&
+                      searchArray.map((data) => {
+                        return (
+                          <img
+                            src={data.img}
+                            onClick={() => {
+                              setToggle(!toggle);
+                              setNumber(data.index);
+                            }}
+                            alt=''
+                            key={data.index}
+                          />
+                        );
+                      })}
+                  </>
+                ) : (
+                  <>
+                    {postData &&
+                      postData.map((data) => {
+                        return (
+                          <img
+                            src={data.img}
+                            onClick={() => {
+                              setToggle(!toggle);
+                              setNumber(data.index);
+                            }}
+                            alt=''
+                            key={data.index}
+                          />
+                        );
+                      })}
+                  </>
+                )}
               </>
             )}
           </>
@@ -81,7 +130,7 @@ export default function Work() {
               }}>
               x
             </p>
-            {ProjectsChose(number)}
+            {ProjectsModal(number)}
           </div>
         </div>
       )}
