@@ -53,9 +53,9 @@ export default function Nav() {
                 <li>
                   <Link to='/Uddannelsesplan'>Uddannelsesplan</Link>
                 </li>
-                <li>
-                  <Link to='/Test'>test</Link>
-                </li>
+                {/*                  <li>
+                   <Link to="/login">login</Link>
+                 </li> */}
               </div>
             </ul>
           </>
