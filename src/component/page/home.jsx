@@ -9,53 +9,51 @@ export default function Home() {
 
   return (
     <section className='home'>
-      <div className='wrapper-icon'>
-        {error ? (
-          <p className='error'>failed to connect to firebase</p>
-        ) : (
-          <>
-            {load ? (
-              <div className='loader'>Loading...</div>
+      {load ? (
+        <div className='loading'>
+          <div className='loader'>Loading...</div>
+        </div>
+      ) : (
+        <>
+          <div className='wrapper-icon'>
+            {error ? (
+              <p className='error'>failed to connect to firebase</p>
             ) : (
-              <img className='profail' src={imgData.url} alt='' />
+              <>
+                <img className='profail' src={imgData.url} alt='' />
+              </>
             )}
-          </>
-        )}
 
-        <h1>
-          {" "}
-          <span className='typing'> Mikkel Jakobsen </span>
-        </h1>
-        <p>
-          {" "}
-          <span> DEVELOPER </span>
-        </p>
-      </div>
+            <h1>
+              <span className='typing'> Mikkel Jakobsen </span>
+            </h1>
+            <p>
+              <span> PROGRAMMØR </span>
+            </p>
+          </div>
 
-      <div className='skills'>
-        <h2>skills</h2>
-        {error ? (
-          <p className='error'>failed to connect to firebase</p>
-        ) : (
-          <>
-            {load ? (
-              <div className='loader'>Loading...</div>
+          <div className='skills'>
+            <h2>skills</h2>
+            {error ? (
+              <p className='error'>failed to connect to firebase</p>
             ) : (
-              <ul>
-                {skillsData &&
-                  skillsData.map((data) => {
-                    return (
-                      <li>
-                        <i className={data.class}></i>
-                        <p>{data.text}</p>
-                      </li>
-                    );
-                  })}
-              </ul>
+              <>
+                <ul>
+                  {skillsData &&
+                    skillsData.map((data) => {
+                      return (
+                        <li>
+                          <i className={data.class}></i>
+                          <p>{data.text}</p>
+                        </li>
+                      );
+                    })}
+                </ul>
+              </>
             )}
-          </>
-        )}
-      </div>
+          </div>
+        </>
+      )}
     </section>
   );
 }

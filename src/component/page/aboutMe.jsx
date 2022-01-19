@@ -1,54 +1,61 @@
-import React from "react";
+import React, { useContext } from "react";
+import { FetchContext } from "../../contexts/Fetch";
 
 export default function AboutMe() {
-  const [openMini, setOpenMini] = React.useState(0);
-  const [close, setClose] = React.useState(3);
-  const [toggle, setToggle] = React.useState(true);
-
-  const AnimeEnd = () => {
-    setTimeout(() => {
-      setToggle(!toggle);
-    }, 500);
-  };
+  const { skillsData } = useContext(FetchContext);
+  const { load } = useContext(FetchContext);
+  const { error } = useContext(FetchContext);
   return (
-    <>
-      <section className='about-me'>
-        {toggle ? (
-          <div className='about-me-content' close={close}>
-            <div className='content-top'>
-              <p
-                className='close'
-                onClick={() => {
-                  setClose(1);
-                  AnimeEnd();
-                }}></p>
-              <p className='mini' onClick={() => setOpenMini(1)}></p>
-              <p className='big' onClick={() => setOpenMini(0)}></p>
+    <section className='about-me'>
+      {load ? (
+        <div className='loading'>
+          <div className='loader'>Loading...</div>
+        </div>
+      ) : (
+        <>
+          <div className='about-me-container'>
+            <div className='about-me-text'>
+              <h2>About Me</h2>
+              <p>
+                I am a self-taught developer with a passion for creating
+                applications. I have a strong desire to learn and grow as a
+                developer. I am currently working on my first project as a
+                developer.
+              </p>
+              <p>
+                I am a self-taught developer with a passion for creating
+                applications. I have a strong desire to learn and grow as a
+                developer. I am currently working on my first project as a
+                developer.
+              </p>
             </div>
-            <p className='content-text' openMini={openMini}>
-              hvem er jeg? <br /> Lorem ipsum dolor sit amet, consectetur
-              adipisicing elit. Cumque laborum recusandae dolore nesciunt, nam
-              magnam explicabo laudantium error optio incidunt saepe rem sed
-              dolores quasi architecto enim. Consequatur reiciendis animi odio
-              voluptatibus cum? Tenetur nesciunt odit nisi saepe, beatae quaerat
-              ratione impedit, maiores est excepturi explicabo nam totam
-              assumenda ut!
-            </p>
+            <div className='skills'>
+              <h2>skills</h2>
+              {error ? (
+                <p className='error'>failed to connect to firebase</p>
+              ) : (
+                <>
+                  {load ? (
+                    <div className='loader'>Loading...</div>
+                  ) : (
+                    <ul>
+                      {skillsData &&
+                        skillsData.map((data) => {
+                          return (
+                            <li>
+                              <i className={data.class}></i>
+                              <p>{data.text}</p>
+                            </li>
+                          );
+                        })}
+                    </ul>
+                  )}
+                </>
+              )}
+            </div>
           </div>
-        ) : (
-          <div className='openFormWrapper'>
-            <button
-              className='openForm'
-              onClick={() => {
-                setClose(0);
-                setToggle(!toggle);
-              }}>
-              {" "}
-              klik mig for at åben formen igen{" "}
-            </button>
-          </div>
-        )}
-      </section>
-    </>
+        </>
+      )}
+    </section>
   );
 }

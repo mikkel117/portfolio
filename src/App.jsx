@@ -11,13 +11,13 @@ function App() {
     document.title = "Portfolio";
   }, []);
   return (
-    <>
+    <div className='app'>
       <FetchContextProvider>
         <Nav />
         {/* <Cookie /> */}
         <Footer />
       </FetchContextProvider>
-    </>
+    </div>
   );
 }
 

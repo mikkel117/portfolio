@@ -65,31 +65,31 @@ export default function Work() {
   };
   return (
     <section className='workSection'>
-      <div className='searchWrapper'>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <select {...register("platform")}>
-            <option value='0'>vælg platform</option>
-            <option value='desktop'>desktop</option>
-            <option value='web'>web</option>
-            <option value='placeholder'>placeholder</option>
-          </select>
-          <select {...register("language")}>
-            <option value='0'>vælg sprog</option>
-            <option value='c#'>c#</option>
-            <option value='html'>html</option>
-          </select>
-          <button type='submit'>søg</button>
-        </form>
-      </div>
-      <section className='work'>
-        {error ? (
-          <p className='error'>failed to connect to firebase</p>
-        ) : (
-          <>
-            {load ? (
-              <>
-                <div className='loader'>Loading...</div>
-              </>
+      {load ? (
+        <div className='loading'>
+          <div className='loader'>Loading...</div>
+        </div>
+      ) : (
+        <>
+          <div className='searchWrapper'>
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <select {...register("platform")}>
+                <option value='0'>vælg platform</option>
+                <option value='desktop'>desktop</option>
+                <option value='web'>web</option>
+                <option value='placeholder'>placeholder</option>
+              </select>
+              <select {...register("language")}>
+                <option value='0'>vælg sprog</option>
+                <option value='c#'>c#</option>
+                <option value='html'>html</option>
+              </select>
+              <button type='submit'>søg</button>
+            </form>
+          </div>
+          <section className='work'>
+            {error ? (
+              <p className='error'>failed to connect to firebase</p>
             ) : (
               <>
                 {isSearch ? (
@@ -129,23 +129,23 @@ export default function Work() {
                 )}
               </>
             )}
-          </>
-        )}
-      </section>
-      {toggle && (
-        <div className='modal'>
-          <div className='modal-content'>
-            <p
-              className='close'
-              onClick={() => {
-                setToggle(!toggle);
-                setNumber();
-              }}>
-              x
-            </p>
-            {ProjectsModal(number)}
-          </div>
-        </div>
+          </section>
+          {toggle && (
+            <div className='modal'>
+              <div className='modal-content'>
+                <p
+                  className='close'
+                  onClick={() => {
+                    setToggle(!toggle);
+                    setNumber();
+                  }}>
+                  x
+                </p>
+                {ProjectsModal(number)}
+              </div>
+            </div>
+          )}
+        </>
       )}
     </section>
   );
