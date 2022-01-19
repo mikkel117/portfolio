@@ -5,7 +5,6 @@ import Projekter from "../page/work";
 import OmMig from "../page/aboutMe";
 import Uddannelsesplan from "../page/EducationPlan";
 import Login from "../page/Login";
-import Test from "../page/test";
 
 function useWindowSize() {
   // eslint-disable-next-line
