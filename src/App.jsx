@@ -11,7 +11,7 @@ function App() {
     document.title = "Portfolio";
   }, []);
   return (
-    <div>
+    <div className='App'>
       <FetchContextProvider>
         <Nav />
         {/* <Cookie /> */}
