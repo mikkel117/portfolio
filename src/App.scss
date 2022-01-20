@@ -62,7 +62,7 @@ body > #root > div {
   white-space: nowrap;
   border-right: 2px solid rgba(255, 255, 255, 0.75);
   margin: 0 auto;
-  animation: typing 2s steps(20, end), blink-caret 0.75s step-end infinite;
+  animation: typing 1.3s steps(20, end), blink-caret 0.75s step-end infinite;
   @keyframes typing {
     from {
       width: 0;

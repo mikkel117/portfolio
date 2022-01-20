@@ -43,18 +43,16 @@ export default function AboutMe() {
         <>
           <div className='about-me-container'>
             <div className='about-me-text'>
-              <h2>About Me</h2>
+              <h2>Om mig</h2>
               <p>
-                I am a self-taught developer with a passion for creating
-                applications. I have a strong desire to learn and grow as a
-                developer. I am currently working on my first project as a
-                developer.
+                Jeg er en kreativ og udvikler, som har en stor passion for
+                programmering og design. Jeg har en stor interesse for at lære
+                nye teknologier og nye metoder.
               </p>
               <p>
-                I am a self-taught developer with a passion for creating
-                applications. I have a strong desire to learn and grow as a
-                developer. I am currently working on my first project as a
-                developer.
+                jeg er uddannet som webudvikler på techcollege og er i gang med
+                dat data- og kommunikationsuddannelsen med specialisering i
+                programmering.
               </p>
             </div>
             <div className='skills'>

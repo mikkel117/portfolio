@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { getFirestore, collection, getDocs } from "firebase/firestore";
-// eslint-disable-next-line
 import firebase from "../../Firebase";
 
 export default function Home() {
