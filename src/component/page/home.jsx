@@ -1,58 +1,57 @@
-import React, { useContext } from "react";
-import { FetchContext } from "../../contexts/Fetch";
+import React, { useState, useEffect } from "react";
+import { getFirestore, collection, getDocs } from "firebase/firestore";
+// eslint-disable-next-line
+import firebase from "../../Firebase";
 
 export default function Home() {
-  const { skillsData } = useContext(FetchContext);
-  const { imgData } = useContext(FetchContext);
-  const { load } = useContext(FetchContext);
-  const { error } = useContext(FetchContext);
+  const [load, setLoad] = useState(false);
+  const [error, setError] = useState(false);
+  const [imgData, setImgData] = useState([]);
+
+  const db = getFirestore();
+
+  const FetchData = async () => {
+    setLoad(true);
+    setError(false);
+    try {
+      const getImgData = await getDocs(collection(db, "img"));
+      getImgData.forEach((doc) => {
+        setImgData(doc.data());
+      });
+    } catch (error) {
+      console.log("error", error);
+      setError(true);
+    }
+    setLoad(false);
+  };
+
+  useEffect(() => {
+    FetchData();
+  }, []);
 
   return (
     <section className='home'>
-      {/* {load ? (
+      {load ? (
         <div className='loading'>
           <div className='loader'>Loading...</div>
         </div>
-      ) : ( */}
-      <>
-        <div className='wrapper-icon'>
-          {error ? (
-            <p className='error'>failed to connect to firebase</p>
-          ) : (
-            <>
-              <img className='profail' src={imgData.url} alt='' />
-            </>
-          )}
-          <p className="test">
+      ) : (
+        <>
+          <div className='wrapper-icon'>
+            {error ? (
+              <p className='error'>failed to connect to firebase</p>
+            ) : (
+              <>
+                <img className='profail' src={imgData.url} alt='' />
+              </>
+            )}
             <h1 className='typing'>Mikkel Jakobsen</h1>
-          </p>
-          <p>
-            <span> PROGRAMMØR </span>
-          </p>
-        </div>
-
-        <div className='skills'>
-          <h2>skills</h2>
-          {error ? (
-            <p className='error'>failed to connect to firebase</p>
-          ) : (
-            <>
-              <ul>
-                {skillsData &&
-                  skillsData.map((data) => {
-                    return (
-                      <li>
-                        <i className={data.class}></i>
-                        <p>{data.text}</p>
-                      </li>
-                    );
-                  })}
-              </ul>
-            </>
-          )}
-        </div>
-      </>
-      {/* )} */}
+            <p>
+              <span> PROGRAMMØR </span>
+            </p>
+          </div>
+        </>
+      )}
     </section>
   );
 }

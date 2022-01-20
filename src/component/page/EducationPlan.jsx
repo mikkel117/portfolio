@@ -1,10 +1,38 @@
-import React, { useContext } from "react";
-import { FetchContext } from "../../contexts/Fetch";
+import React, { useEffect, useState } from "react";
+import { getFirestore, collection, getDocs } from "firebase/firestore";
+import firebase from "../../Firebase";
+
+const db = getFirestore();
 
 export default function EducationPlan() {
-  const { uPlanData } = useContext(FetchContext);
-  const { load } = useContext(FetchContext);
-  const { error } = useContext(FetchContext);
+  const [load, setLoad] = useState(false);
+  const [error, setError] = useState(false);
+  const [uPlanData, setUPlanData] = useState([]);
+
+  const FetchData = async () => {
+    setLoad(true);
+    setError(false);
+    const uPlanItems = [];
+    try {
+      const getUPLan = await getDocs(collection(db, "Uddannelsesplan"));
+
+      getUPLan.forEach((doc) => {
+        uPlanItems.push(doc.data());
+      });
+    } catch (error) {
+      console.log("error", error);
+      setError(true);
+    }
+    uPlanItems.sort(function (a, b) {
+      return a.index - b.index;
+    });
+    setUPlanData(uPlanItems);
+    setLoad(false);
+  };
+
+  useEffect(() => {
+    FetchData();
+  }, []);
 
   return (
     <section className='edcationPlan'>

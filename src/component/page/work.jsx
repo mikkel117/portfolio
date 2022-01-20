@@ -1,6 +1,9 @@
-import React, { useState, useContext } from "react";
-import { FetchContext } from "../../contexts/Fetch";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { getFirestore, collection, getDocs } from "firebase/firestore";
+import firebase from "../../Firebase";
+
+const db = getFirestore();
 
 export default function Work() {
   const { register, handleSubmit } = useForm();
@@ -10,9 +13,34 @@ export default function Work() {
   const [isSearch, setIsSearch] = useState(false);
   const [searchArray, setSearchArray] = useState([]);
 
-  const { postData } = useContext(FetchContext);
-  const { load } = useContext(FetchContext);
-  const { error } = useContext(FetchContext);
+  const [load, setLoad] = useState(false);
+  const [error, setError] = useState(false);
+  const [postData, setPostData] = useState([]);
+
+  const FetchData = async () => {
+    setLoad(true);
+    setError(false);
+    const postItems = [];
+    try {
+      const getPostsData = await getDocs(collection(db, "posts"));
+
+      getPostsData.forEach((doc) => {
+        postItems.push(doc.data());
+      });
+    } catch (error) {
+      console.log("error", error);
+      setError(true);
+    }
+    postItems.sort(function (a, b) {
+      return a.index - b.index;
+    });
+    setPostData(postItems);
+    setLoad(false);
+  };
+
+  useEffect(() => {
+    FetchData();
+  }, []);
 
   const onSubmit = (data) => FilterByTag(data);
 

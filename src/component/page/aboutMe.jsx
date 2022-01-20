@@ -1,10 +1,38 @@
-import React, { useContext } from "react";
-import { FetchContext } from "../../contexts/Fetch";
+import React, { useState, useEffect } from "react";
+import { getFirestore, collection, getDocs } from "firebase/firestore";
+import firebase from "../../Firebase";
+
+const db = getFirestore();
 
 export default function AboutMe() {
-  const { skillsData } = useContext(FetchContext);
-  const { load } = useContext(FetchContext);
-  const { error } = useContext(FetchContext);
+  const [skillsData, setSkillsData] = useState([]);
+  const [load, setLoad] = useState(false);
+  const [error, setError] = useState(false);
+
+  const FetchData = async () => {
+    setLoad(true);
+    setError(false);
+    const skillsItems = [];
+    try {
+      const getSkillsData = await getDocs(collection(db, "skills"));
+      getSkillsData.forEach((doc) => {
+        skillsItems.push(doc.data());
+      });
+    } catch (error) {
+      console.log("error", error);
+      setError(true);
+    }
+    skillsItems.sort(function (a, b) {
+      return a.index - b.index;
+    });
+    setSkillsData(skillsItems);
+    setLoad(false);
+  };
+
+  useEffect(() => {
+    FetchData();
+  }, []);
+
   return (
     <section className='about-me'>
       {load ? (

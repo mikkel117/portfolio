@@ -3,8 +3,8 @@ import "./App.scss";
 
 import Nav from "./component/header-footer/nav";
 import Footer from "./component/header-footer/footer";
-import Cookie from "./component/page/Cookie";
-import FetchContextProvider from "./contexts/Fetch";
+/* import Cookie from "./component/page/Cookie"; */
+/* import FetchContextProvider from "./contexts/Fetch"; */
 
 function App() {
   useEffect(() => {
@@ -12,11 +12,11 @@ function App() {
   }, []);
   return (
     <div className='App'>
-      <FetchContextProvider>
-        <Nav />
-        {/* <Cookie /> */}
-        <Footer />
-      </FetchContextProvider>
+      {/* <FetchContextProvider> */}
+      <Nav />
+      {/* <Cookie /> */}
+      <Footer />
+      {/* </FetchContextProvider> */}
     </div>
   );
 }
