@@ -4,14 +4,9 @@
   margin: 0;
   box-sizing: border-box;
 }
-html {
-  height: 100%;
-}
-
 body {
   background-color: #1e1f26;
   color: white;
-  /* min-height: 100%; */
   position: relative;
 }
 
@@ -20,10 +15,6 @@ body {
   display: grid;
   grid-template-rows: auto 1fr auto;
 }
-
-/* #root {
-  padding-bottom: 60px;
-} */
 
 body > #root > div {
   min-height: 100vh;
@@ -64,16 +55,23 @@ body > #root > div {
 //----------------------
 //animate typing
 //----------------------
+.test {
+  width: 200px;
+}
 .typing {
-  width: 15ch;
-  animation: typing 2s steps(22), blink 0.9s infinite;
+  /* width: 15ch; */
+  animation: typing 2s steps(22, end), blink 0.9s infinite;
   white-space: nowrap;
+  margin: 0 auto;
   overflow: hidden;
   border-right: 3px solid;
 
   @keyframes typing {
     from {
       width: 0;
+    }
+    to {
+      width: 100%;
     }
   }
 
@@ -245,6 +243,9 @@ nav {
     p,
     h1 {
       margin-top: 10px;
+    }
+    h1 {
+      width: 100px;
     }
   }
   .skills {
