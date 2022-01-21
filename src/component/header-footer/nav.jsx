@@ -7,14 +7,12 @@ import Uddannelsesplan from "../page/EducationPlan";
 import Login from "../page/Login";
 
 function useWindowSize() {
-  // eslint-disable-next-line
   const [size, setSize] = useState([window.innerHeight, window.innerWidth]);
   return size;
 }
 
 export default function Nav() {
   const [toggle, setToggle] = useState(false);
-  // eslint-disable-next-line
   const [height, width] = useWindowSize();
 
   useEffect(() => {
