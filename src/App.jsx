@@ -3,7 +3,7 @@ import "./App.scss";
 
 import Nav from "./component/header-footer/nav";
 import Footer from "./component/header-footer/footer";
-/* import Cookie from "./component/page/Cookie"; */
+import Cookie from "./component/page/Cookie";
 /* import FetchContextProvider from "./contexts/Fetch"; */
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
     <div className='App'>
       {/* <FetchContextProvider> */}
       <Nav />
-      {/* <Cookie /> */}
+      <Cookie />
       <Footer />
       {/* </FetchContextProvider> */}
     </div>

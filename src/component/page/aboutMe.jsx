@@ -26,11 +26,20 @@ export default function AboutMe() {
       return a.index - b.index;
     });
     setSkillsData(skillsItems);
+    document.cookie = `skillsData=${JSON.stringify(skillsItems)}; path=/`;
     setLoad(false);
   };
 
   useEffect(() => {
-    FetchData();
+    if (!document.cookie.includes("skillsData")) {
+      FetchData();
+    } else {  
+      const cookieData = document.cookie
+        .split("; ")
+        .find((item) => item.includes("skillsData"))
+        .split("skillsData=")[1];
+      setSkillsData(JSON.parse(cookieData));
+    }
   }, []);
 
   return (
@@ -68,7 +77,7 @@ export default function AboutMe() {
                       {skillsData &&
                         skillsData.map((data) => {
                           return (
-                            <li>
+                            <li key={data.index}>
                               <i className={data.class}></i>
                               <p>{data.text}</p>
                             </li>
