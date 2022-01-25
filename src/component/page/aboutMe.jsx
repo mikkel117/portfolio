@@ -42,43 +42,8 @@ export default function AboutMe() {
       ) : (
         <>
           <div className='about-me-container'>
-            <div className='about-me-text'>
-              <h2>Om mig</h2>
-              <p>
-                Jeg er en kreativ og udvikler, som har en stor passion for
-                programmering og design. Jeg har en stor interesse for at lære
-                nye teknologier og nye metoder.
-              </p>
-              <p>
-                jeg er uddannet som webudvikler på techcollege og er i gang med
-                dat data- og kommunikationsuddannelsen med specialisering i
-                programmering.
-              </p>
-            </div>
-            <div className='skills'>
-              <h2>skills</h2>
-              {error ? (
-                <p className='error'>failed to connect to firebase</p>
-              ) : (
-                <>
-                  {load ? (
-                    <div className='loader'>Loading...</div>
-                  ) : (
-                    <ul>
-                      {skillsData &&
-                        skillsData.map((data) => {
-                          return (
-                            <li key={data.index}>
-                              <i className={data.class}></i>
-                              <p>{data.text}</p>
-                            </li>
-                          );
-                        })}
-                    </ul>
-                  )}
-                </>
-              )}
-            </div>
+            {/* <div className='about-me-text'></div> */}
+            <h2>about me</h2>
           </div>
         </>
       )}
