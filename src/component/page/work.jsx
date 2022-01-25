@@ -35,20 +35,11 @@ export default function Work() {
       return a.index - b.index;
     });
     setPostData(postItems);
-    document.cookie = `postData=${JSON.stringify(postItems)}; path=/`;
     setLoad(false);
   };
 
   useEffect(() => {
-    if (!document.cookie.includes("postData")) {
-      FetchData();
-    } else {
-      const cookieData = document.cookie
-        .split("; ")
-        .find((item) => item.includes("postData"))
-        .split("postData=")[1];
-      setPostData(JSON.parse(cookieData));
-    }
+    FetchData();
   }, []);
 
   const onSubmit = (data) => FilterByTag(data);

@@ -27,20 +27,11 @@ export default function EducationPlan() {
       return a.index - b.index;
     });
     setUPlanData(uPlanItems);
-    document.cookie = `uPlanData=${JSON.stringify(uPlanItems)}; path=/`;
     setLoad(false);
   };
 
   useEffect(() => {
-    if (!document.cookie.includes("uPlanData")) {
       FetchData();
-    } else {
-      const cookieData = document.cookie
-        .split("; ")
-        .find((item) => item.includes("uPlanData"))
-        .split("uPlanData=")[1];
-      setUPlanData(JSON.parse(cookieData));
-    }
   }, []);
 
   return (
