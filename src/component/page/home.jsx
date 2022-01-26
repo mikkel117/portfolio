@@ -20,6 +20,7 @@ export default function Home() {
       getImgData.forEach((doc) => {
         setImgData(doc.data());
       });
+
       getSkillsData.forEach((doc) => {
         skillsItems.push(doc.data());
       });

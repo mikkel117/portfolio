@@ -1,35 +1,22 @@
 import React, { useState, useEffect } from "react";
-import { getFirestore, collection, getDocs } from "firebase/firestore";
-import firebase from "../../Firebase";
-
-const db = getFirestore();
+import GetData from "../functions/GetImgs";
 
 export default function AboutMe() {
-  const [skillsData, setSkillsData] = useState([]);
+  const [imgData, setImgData] = useState([]);
   const [load, setLoad] = useState(false);
   const [error, setError] = useState(false);
 
-  const FetchData = async () => {
-    setLoad(true);
-    setError(false);
-    const skillsItems = [];
-    try {
-      const getSkillsData = await getDocs(collection(db, "skills"));
-      getSkillsData.forEach((doc) => {
-        skillsItems.push(doc.data());
-      });
-    } catch (error) {
-      console.log("error", error);
-      setError(true);
-    }
-    skillsItems.sort(function (a, b) {
-      return a.index - b.index;
-    });
-    setSkillsData(skillsItems);
-    setLoad(false);
-  };
-
   useEffect(() => {
+    setLoad(true);
+    const FetchData = async () => {
+      const { imgData, catchError } = await GetData();
+      if (catchError) {
+        setError(true);
+      } else {
+        setImgData(imgData);
+      }
+      setLoad(false);
+    };
     FetchData();
   }, []);
 
@@ -41,9 +28,21 @@ export default function AboutMe() {
         </div>
       ) : (
         <>
-          <div className='about-me-container'>
-            {/* <div className='about-me-text'></div> */}
-            <h2>about me</h2>
+          <h1>om mig</h1>
+          <div className='about-me-content'>
+            {error ? (
+              <p className='error'>failed to connect to firebase</p>
+            ) : (
+              <img className='about-me-img' src={imgData.url} alt='' />
+            )}
+            <p>
+              Condimentum natoque nec facilisi habitant morbi eu letius lorem
+              massa augue ex neque aliquam tristique viverra penatibus maecenas
+              aliquet sodales euismod praesent dolor et montes congue ipsum
+              egestas pretium porta elit lobortis bibendum convallis suscipit
+              fames consequat pharetra mauris a suspendisse nulla mus dis
+              hendrerit ridiculus velit parturient litora nunc
+            </p>
           </div>
         </>
       )}
