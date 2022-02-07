@@ -6,9 +6,6 @@ import Footer from "./component/header-footer/footer";
 import Cookie from "./component/page/Cookie";
 
 function App() {
-  useEffect(() => {
-    document.title = "Portfolio";
-  }, []);
   return (
     <div className='App'>
       {/* <FetchContextProvider> */}

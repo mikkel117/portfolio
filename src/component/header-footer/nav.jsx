@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  useHistory,
+} from "react-router-dom";
 import Home from "../page/home";
 import Projekter from "../page/work";
 import OmMig from "../page/aboutMe";
@@ -7,23 +12,31 @@ import Uddannelsesplan from "../page/EducationPlan";
 import Login from "../page/Login";
 
 function useWindowSize() {
-  const [size, setSize] = useState([window.innerHeight, window.innerWidth]);
-  return size;
+  const [windowSize, setWindowSize] = useState({
+    width: undefined,
+    height: undefined,
+  });
+  useEffect(() => {
+    function handleResize() {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    }
+    window.addEventListener("resize", handleResize);
+    handleResize();
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+  return windowSize;
 }
 
 export default function Nav() {
   const [toggle, setToggle] = useState(false);
-  const [height, width] = useWindowSize();
+  const size = useWindowSize();
 
   useEffect(() => {
-    const ChackWidth = () => {
-      let getWidth = width;
-      if (getWidth === "601" || getWidth > "601") {
-        setToggle(true);
-      }
-    };
-    ChackWidth();
-  }, [width]);
+    size.width > 600 ? setToggle(true) : setToggle(false);
+  }, [size]);
 
   return (
     <Router>

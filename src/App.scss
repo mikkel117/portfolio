@@ -21,6 +21,14 @@ body > #root > div {
   min-height: 100vh;
 }
 
+.WithTest {
+  h1 {
+    span {
+      color: red;
+    }
+  }
+}
+
 //----------------------
 //style to the error if there is any
 //----------------------
@@ -732,8 +740,8 @@ footer {
       grid-column: 1/3;
     }
   }
-  footer{
-    p{
+  footer {
+    p {
       font-size: 4vw;
     }
   }
