@@ -1,43 +1,37 @@
 import React, { useState, useEffect } from "react";
-import { getFirestore, collection, getDocs } from "firebase/firestore";
-import firebase from "../../Firebase";
+import GetData from "../functions/GetImgs";
+import Fetch from "../functions/Fetch";
 
 export default function Home() {
   const [load, setLoad] = useState(false);
   const [error, setError] = useState(false);
-  const [imgData, setImgData] = useState([]);
   const [skillsData, setSkillsData] = useState([]);
-
-  const db = getFirestore();
-
-  const FetchData = async () => {
-    setLoad(true);
-    setError(false);
-    const skillsItems = [];
-    try {
-      const getImgData = await getDocs(collection(db, "img"));
-      const getSkillsData = await getDocs(collection(db, "skills"));
-      getImgData.forEach((doc) => {
-        setImgData(doc.data());
-      });
-
-      getSkillsData.forEach((doc) => {
-        skillsItems.push(doc.data());
-      });
-    } catch (error) {
-      console.log("error", error);
-      setError(true);
-    }
-    skillsItems.sort(function (a, b) {
-      return a.index - b.index;
-    });
-    setSkillsData(skillsItems);
-    setLoad(false);
-  };
+  const [imgError, setImgError] = useState(false);
+  const [imgData, setImgData] = useState([]);
 
   useEffect(() => {
+    setLoad(true);
+    const ImgData = async () => {
+      const { imgData, catchError } = await GetData();
+      if (catchError) {
+        setImgError(true);
+      } else {
+        setImgData(imgData);
+      }
+    };
+    const FetchData = async () => {
+      const { data, catchError } = await Fetch("skills");
+      if (catchError) {
+        setError(true);
+      } else {
+        setSkillsData(data);
+      }
+      setLoad(false);
+    };
+    ImgData();
     FetchData();
   }, []);
+
   return (
     <section className='home'>
       {load ? (
@@ -47,7 +41,7 @@ export default function Home() {
       ) : (
         <>
           <div className='banner'>
-            {error ? (
+            {imgError ? (
               <p className='error'>failed to connect to firebase</p>
             ) : (
               <>

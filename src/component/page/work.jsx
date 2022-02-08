@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { getFirestore, collection, getDocs } from "firebase/firestore";
-import firebase from "../../Firebase";
-
-const db = getFirestore();
+import Fetch from "../functions/Fetch";
 
 export default function Work() {
   const { register, handleSubmit } = useForm();
@@ -17,28 +14,17 @@ export default function Work() {
   const [error, setError] = useState(false);
   const [postData, setPostData] = useState([]);
 
-  const FetchData = async () => {
-    setLoad(true);
-    setError(false);
-    const postItems = [];
-    try {
-      const getPostsData = await getDocs(collection(db, "posts"));
-
-      getPostsData.forEach((doc) => {
-        postItems.push(doc.data());
-      });
-    } catch (error) {
-      console.log("error", error);
-      setError(true);
-    }
-    postItems.sort(function (a, b) {
-      return a.index - b.index;
-    });
-    setPostData(postItems);
-    setLoad(false);
-  };
-
   useEffect(() => {
+    setLoad(true);
+    const FetchData = async () => {
+      const { data, catchError } = await Fetch("posts");
+      if (catchError) {
+        setError(true);
+      } else {
+        setPostData(data);
+      }
+      setLoad(false);
+    };
     FetchData();
   }, []);
 
