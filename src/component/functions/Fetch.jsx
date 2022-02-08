@@ -1,7 +1,6 @@
 import { getFirestore, collection, getDocs } from "firebase/firestore";
 import "../../Firebase";
 const GetData = async (dataC) => {
-  console.log(dataC);
   const db = getFirestore();
   let data = [];
   let catchError = false;
