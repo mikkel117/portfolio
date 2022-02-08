@@ -76,6 +76,7 @@ export default function Nav() {
                 </li>
               </div>
             </ul>
+            <div className='background-close' onClick={() => closeNav()} />
           </>
         ) : (
           <i

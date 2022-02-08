@@ -1,6 +1,5 @@
-@import "./style/AboutMe.scss", "./style/EdcationPlan.scss",
-  "./style/Footer.scss", "./style/Home.scss", "./style/Modal.scss",
-  "./style/Work.scss";
+@import "AboutMe.scss", "EdcationPlan.scss", "Footer.scss", "Home.scss",
+  "Modal.scss", "Work.scss";
 //https://blog.logrocket.com/8-ways-to-deploy-a-react-app-for-free/
 * {
   padding: 0;
@@ -113,9 +112,8 @@ nav {
       }
     }
   }
-  .close {
-    display: none;
-  }
+  .close,
+  .background-close,
   .open {
     display: none;
   }
@@ -133,30 +131,30 @@ nav {
   z-index: 9999;
   display: flex;
   justify-content: center;
-}
 
-.loader {
-  align-self: center;
-  border: 16px solid #f3f3f3;
-  border-radius: 50%;
-  width: 200px;
-  height: 200px;
-  font-size: 30px;
-  animation: spin 2s infinite;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  .loader {
+    align-self: center;
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    font-size: 30px;
+    animation: spin 2s infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-  @keyframes spin {
-    0% {
-      border: 16px solid gray;
-    }
-    50% {
-      border: 16px solid #1e1f26;
-    }
-    100% {
-      transform: rotate(360deg);
-      border: 16px solid gray;
+    @keyframes spin {
+      0% {
+        border: 16px solid gray;
+      }
+      50% {
+        border: 16px solid #1e1f26;
+      }
+      100% {
+        transform: rotate(360deg);
+        border: 16px solid gray;
+      }
     }
   }
 }
@@ -197,11 +195,13 @@ nav {
   }
 }
 
-@media only screen and (max-width: 600px) {
+/* tablet */
+@media only screen and (max-width: 768px) {
   nav {
     padding: 20px;
     display: flex;
     justify-content: flex-end;
+    z-index: 1;
 
     .sidepanel {
       width: auto;
@@ -246,8 +246,18 @@ nav {
       }
     }
     .close,
-    .open {
+    .open,
+    .background-close {
       display: block;
+    }
+    .background-close {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 0;
     }
   }
 
@@ -369,7 +379,8 @@ nav {
   }
 }
 
-@media only screen and (max-width: 500px) {
+/* phone */
+@media only screen and (max-width: 425px) {
   .workSection {
     img {
       grid-column: 1/3;
