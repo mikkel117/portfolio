@@ -31,7 +31,7 @@ export default function EducationPlan() {
   };
 
   useEffect(() => {
-      FetchData();
+    FetchData();
   }, []);
 
   return (

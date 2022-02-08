@@ -1,0 +1,29 @@
+//----------------------
+//about me
+//----------------------
+.about-me {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto 1fr;
+  grid-row-gap: 20px;
+  text-align: center;
+  justify-content: center;
+  h1 {
+    grid-column: 1/4;
+  }
+  .about-me-content {
+    grid-column: 1/4;
+    justify-self: center;
+    width: 50%;
+    display: flex;
+    align-self: center;
+  }
+  .about-me-img {
+    justify-self: center;
+    width: 300px;
+    height: 300px;
+    border: solid 1px gray;
+  }
+}

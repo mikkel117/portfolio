@@ -1,0 +1,24 @@
+//----------------------
+//footer
+//----------------------
+footer {
+  background-color: black;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  a {
+    color: white;
+    i {
+      padding: 10px;
+    }
+  }
+  i {
+    padding: 10px;
+  }
+  p {
+    font-size: 1.5vw;
+    padding: 12px 16px;
+    text-align: center;
+    align-self: center;
+  }
+}

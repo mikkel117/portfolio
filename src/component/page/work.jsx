@@ -171,6 +171,10 @@ export default function Work() {
                 </p>
                 {ProjectsModal(number)}
               </div>
+              <div
+                className='background-close'
+                onClick={() => setToggle(false)}
+              />
             </div>
           )}
         </>

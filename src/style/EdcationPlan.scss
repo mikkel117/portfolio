@@ -1,0 +1,35 @@
+//----------------------
+//edcationplan
+//----------------------
+.edcationPlan {
+  text-align: center;
+  width: 100%;
+  h1 {
+    margin: 20px 0 20px 0;
+  }
+  ul {
+    list-style-type: none;
+    width: 100%;
+    li {
+      border: solid 3px gray;
+      margin: 0 auto;
+      margin-bottom: 15px;
+      width: 50%;
+      padding: 0.4vw;
+      background-color: #05060d;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      p,
+      h2 {
+        font-size: 3vh;
+        align-self: center;
+      }
+      .time {
+        border-left: solid 3px gray;
+      }
+    }
+    li:nth-child(even) {
+      background-color: #1f2026;
+    }
+  }
+}

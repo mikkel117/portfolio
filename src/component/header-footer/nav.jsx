@@ -1,10 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  useHistory,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Home from "../page/home";
 import Projekter from "../page/work";
 import OmMig from "../page/aboutMe";
@@ -38,6 +33,13 @@ export default function Nav() {
     size.width > 600 ? setToggle(true) : setToggle(false);
   }, [size]);
 
+  const closeNav = () => {
+    if (size.width < 600) {
+      setToggle(!toggle);
+      console.log(toggle);
+    }
+  };
+
   return (
     <Router>
       <nav>
@@ -53,16 +55,24 @@ export default function Nav() {
                   X
                 </div>
                 <li>
-                  <Link to='/'>Forside</Link>
+                  <Link to='/' onClick={() => closeNav()}>
+                    Forside
+                  </Link>
                 </li>
                 <li>
-                  <Link to='/Projekter'>Projekter</Link>
+                  <Link to='/Projekter' onClick={() => closeNav()}>
+                    Projekter
+                  </Link>
                 </li>
                 <li>
-                  <Link to='/omMig'>Om mig</Link>
+                  <Link to='/omMig' onClick={() => closeNav()}>
+                    Om mig
+                  </Link>
                 </li>
                 <li>
-                  <Link to='/Uddannelsesplan'>Uddannelsesplan</Link>
+                  <Link to='/Uddannelsesplan' onClick={() => closeNav()}>
+                    Uddannelsesplan
+                  </Link>
                 </li>
               </div>
             </ul>

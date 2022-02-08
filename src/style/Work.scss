@@ -1,0 +1,82 @@
+//----------------------
+//work
+//----------------------
+.workSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .searchWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+    margin: 20px 0 50px 0;
+    form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      select {
+        width: 200px;
+        height: 30px;
+        border: 1px solid black;
+        background-color: #303138;
+        border-radius: 10px;
+        margin: 5px;
+        text-align-last: center;
+        font-size: 15px;
+        color: white;
+        option {
+          color: white;
+          text-align: center;
+          font-size: 15px;
+        }
+        &:hover {
+          cursor: pointer;
+        }
+      }
+      button {
+        width: 100%;
+        height: 30px;
+        background-color: #303138;
+        color: white;
+        border: 1px solid black;
+        margin-top: 10px;
+        font-size: 15px;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  .work {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: repeat(auto, 100px);
+    grid-gap: 20px;
+    .error {
+      text-align: center;
+      grid-column: 1/4;
+    }
+    img {
+      justify-self: center;
+      border: 2px solid gray;
+      width: 200px;
+      height: 200px;
+    }
+    img:hover {
+      padding: 2px;
+      cursor: pointer;
+      box-shadow: 3px 3px 5px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    .loader {
+      grid-column: 2;
+    }
+  }
+  .modalImg {
+    width: 100%;
+    height: 100%;
+  }
+}
