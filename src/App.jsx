@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./style/App.scss";
 
 import Nav from "./component/header-footer/nav";
