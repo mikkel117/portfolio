@@ -36,7 +36,6 @@ export default function Nav() {
   const closeNav = () => {
     if (size.width < 600) {
       setToggle(!toggle);
-      console.log(toggle);
     }
   };
 
