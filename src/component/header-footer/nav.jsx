@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import Home from "../page/home";
 import Projekter from "../page/work";
 import OmMig from "../page/aboutMe";
 import Uddannelsesplan from "../page/EducationPlan";
 import Login from "../page/Login";
+import NotFound from "../page/NotFound";
 
 function useWindowSize() {
   const [windowSize, setWindowSize] = useState({
@@ -85,11 +86,17 @@ export default function Nav() {
             }}></i>
         )}
       </nav>
-      <Route path='/' exact component={Home}></Route>
-      <Route path='/Projekter' exact component={Projekter}></Route>
-      <Route path='/omMig' exact component={OmMig}></Route>
-      <Route path='/Uddannelsesplan' exact component={Uddannelsesplan}></Route>
-      <Route path='/login' exact component={Login}></Route>
+      <Switch>
+        <Route path='/' exact component={Home}></Route>
+        <Route path='/Projekter' exact component={Projekter}></Route>
+        <Route path='/omMig' exact component={OmMig}></Route>
+        <Route
+          path='/Uddannelsesplan'
+          exact
+          component={Uddannelsesplan}></Route>
+        <Route path='/login' exact component={Login}></Route>
+        <Route component={NotFound}></Route>
+      </Switch>
     </Router>
   );
 }
