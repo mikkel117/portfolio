@@ -1,6 +1,6 @@
 @import "style/AboutMe.scss", "style/EdcationPlan.scss", "style/Footer.scss",
   "style/Home.scss", "style/Modal.scss", "style/Work.scss",
-  "style/NotFound.scss";
+  "style/NotFound.scss", "style/ERP.scss";
 
 //https://blog.logrocket.com/8-ways-to-deploy-a-react-app-for-free/
 * {
@@ -374,13 +374,13 @@ nav {
     text-align: center;
   }
 
-  .notFound{
-   p{
-     text-align: center;
-    font-size: 2em;
-    margin: 5vh;
-    /* margin-top: 10vh; */
-   }
+  .notFound {
+    p {
+      text-align: center;
+      font-size: 2em;
+      margin: 5vh;
+      /* margin-top: 10vh; */
+    }
   }
 
   footer {

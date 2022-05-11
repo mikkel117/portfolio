@@ -4,6 +4,7 @@ import Home from "../page/home";
 import Projekter from "../page/work";
 import OmMig from "../page/aboutMe";
 import Uddannelsesplan from "../page/EducationPlan";
+import ERP from "../page/ERPInvoice";
 import Login from "../page/Login";
 import NotFound from "../page/NotFound";
 
@@ -74,6 +75,11 @@ export default function Nav() {
                     Uddannelsesplan
                   </Link>
                 </li>
+                <li>
+                  <Link to='/Erp' onClick={() => closeNav()}>
+                    ERP
+                  </Link>
+                </li>
               </div>
             </ul>
             <div className='background-close' onClick={() => closeNav()} />
@@ -94,6 +100,7 @@ export default function Nav() {
           path='/Uddannelsesplan'
           exact
           component={Uddannelsesplan}></Route>
+        <Route path='/Erp' exact component={ERP}></Route>
         <Route path='/login' exact component={Login}></Route>
         <Route component={NotFound}></Route>
       </Switch>
