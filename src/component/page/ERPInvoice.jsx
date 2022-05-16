@@ -2,7 +2,7 @@ import React, { useEffect, useContext } from "react";
 
 export default function ERPInvoice() {
   useEffect(() => {
-    fetch("https://localhost:7110/home", {
+    fetch("https://localhost:7110/home/1", {
       Method: "GET",
     })
       .then((res) => res.json())
@@ -11,7 +11,7 @@ export default function ERPInvoice() {
   }, []);
   return (
     <section>
-      <h1>ERP test</h1>
+      <h1>det her er en asp.net web api test</h1>
     </section>
   );
 }

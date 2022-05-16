@@ -77,7 +77,7 @@ export default function Nav() {
                 </li>
                 <li>
                   <Link to='/Erp' onClick={() => closeNav()}>
-                    ERP
+                    Web api
                   </Link>
                 </li>
               </div>
