@@ -76,7 +76,7 @@ export default function Nav() {
                   </Link>
                 </li>
                 <li>
-                  <Link to='/Erp' onClick={() => closeNav()}>
+                  <Link to='/AspApi' onClick={() => closeNav()}>
                     Web api
                   </Link>
                 </li>
@@ -100,7 +100,7 @@ export default function Nav() {
           path='/Uddannelsesplan'
           exact
           component={Uddannelsesplan}></Route>
-        <Route path='/Erp' exact component={ERP}></Route>
+        <Route path='/AspApi' exact component={ERP}></Route>
         <Route path='/login' exact component={Login}></Route>
         <Route component={NotFound}></Route>
       </Switch>
