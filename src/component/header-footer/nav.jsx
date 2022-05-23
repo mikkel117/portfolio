@@ -76,9 +76,9 @@ export default function Nav() {
                   </Link>
                 </li>
                 <li>
-                  <Link to='/AspApi' onClick={() => closeNav()}>
+                  {/*                   <Link to='/AspApi' onClick={() => closeNav()}>
                     Web api
-                  </Link>
+                  </Link> */}
                 </li>
               </div>
             </ul>
