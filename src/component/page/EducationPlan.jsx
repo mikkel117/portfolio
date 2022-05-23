@@ -10,7 +10,6 @@ export default function EducationPlan() {
   const [load, setLoad] = useState(false);
   const [error, setError] = useState(false);
   const [uPlanData, setUPlanData] = useState([]);
-  const [hover, setHover] = useState(false);
 
   useEffect(() => {
     setLoad(true);
@@ -106,9 +105,7 @@ export default function EducationPlan() {
                             : data.isBetween
                             ? IsBetween
                             : null
-                        }
-                        onMouseOver={() => setHover(true)}
-                        onMouseLeave={() => setHover(false)}>
+                        }>
                         <h2
                           style={
                             data.isBefore
