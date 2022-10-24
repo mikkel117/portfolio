@@ -37,11 +37,14 @@ export default function AboutMe() {
             )} */}
             <p>
               Jeg er en mand på 22 år der godt kan lide at bruge sin tid foran
-              en computer. Jeg spiller tit med nogle venner hvor vi spiller
-              sammen mod andre. Jeg går normalt i skydeklup og går til
-              hardball/softgun. Jeg er god til at komme op med løsninger på
-              eventuelle problemer. Jeg er pligtopfyldende og er næsten altid i
-              godt humør.
+              en computer.
+              <br />
+              Jeg spiller tit med nogle venner hvor vi spiller sammen mod andre.
+              <br />
+              Jeg går normalt i skydeklup og går til hardball/softgun.
+              <br />
+              Jeg er god til at komme op med løsninger på eventuelle problemer.
+              Jeg er pligtopfyldende og er næsten altid i godt humør.
             </p>
           </div>
         </>
