@@ -30,11 +30,11 @@ export default function AboutMe() {
         <>
           <h1>om mig</h1>
           <div className='about-me-content'>
-            {error ? (
+            {/*  {error ? (
               <p className='error'>failed to connect to firebase</p>
             ) : (
               <img className='about-me-img' src={imgData.url} alt='' />
-            )}
+            )} */}
             <p>
               Jeg er en mand på 22 år der godt kan lide at bruge sin tid foran
               en computer.
