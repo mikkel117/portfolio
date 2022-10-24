@@ -30,18 +30,18 @@ export default function AboutMe() {
         <>
           <h1>om mig</h1>
           <div className='about-me-content'>
-            {error ? (
+            {/* {error ? (
               <p className='error'>failed to connect to firebase</p>
             ) : (
               <img className='about-me-img' src={imgData.url} alt='' />
-            )}
+            )} */}
             <p>
-              Condimentum natoque nec facilisi habitant morbi eu letius lorem
-              massa augue ex neque aliquam tristique viverra penatibus maecenas
-              aliquet sodales euismod praesent dolor et montes congue ipsum
-              egestas pretium porta elit lobortis bibendum convallis suscipit
-              fames consequat pharetra mauris a suspendisse nulla mus dis
-              hendrerit ridiculus velit parturient litora nunc
+              Jeg er en mand på 22 år der godt kan lide at bruge sin tid foran
+              en computer. Jeg spiller tit med nogle venner hvor vi spiller
+              sammen mod andre. Jeg går normalt i skydeklup og går til
+              hardball/softgun. Jeg er god til at komme op med løsninger på
+              eventuelle problemer. Jeg er pligtopfyldende og er næsten altid i
+              godt humør.
             </p>
           </div>
         </>

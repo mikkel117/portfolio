@@ -19,6 +19,10 @@
     width: 50%;
     display: flex;
     align-self: center;
+    p {
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
   }
   .about-me-img {
     justify-self: center;
