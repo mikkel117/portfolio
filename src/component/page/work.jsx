@@ -91,7 +91,6 @@ export default function Work() {
                 <option value='0'>vælg platform</option>
                 <option value='desktop'>desktop</option>
                 <option value='web'>web</option>
-                <option value='placeholder'>placeholder</option>
               </select>
               <select {...register("language")}>
                 <option value='0'>vælg sprog</option>
