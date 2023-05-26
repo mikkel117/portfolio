@@ -36,7 +36,7 @@ export default function AboutMe() {
               <img className='about-me-img' src={imgData.url} alt='' />
             )} */}
             <p>
-              Jeg er en mand på 22 år der godt kan lide at bruge sin tid foran
+              Jeg er en mand på 23 år der godt kan lide at bruge sin tid foran
               en computer.
               <br />
               Jeg spiller tit med nogle venner hvor vi spiller sammen mod andre.
